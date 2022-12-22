@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+LIGHTGREEN='\033[1;32m'
+WHITE='\033[1;37m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+
+# Check commit syntax using convention ('https://www.conventionalcommits.org/en/v1.0.0/') - STAGE D
+printf "${YELLOW}STAGE D - Checking commit message format using commit convention 'https://www.conventionalcommits.org/en/v1.0.0/'${WHITE}\n"
+npx --no -- commitlint --edit ${1} ||
+  (
+    printf "${RED}❌ ERROR! ❌: Make sure you tried to commit using 'npm run cm'. Otherwhise, run 'npx --no -- commitlint --edit \${1}' to look for errors in the commit message and then try to commit again${WHITE}\n"
+    false
+  )
+printf "${LIGHTGREEN}>>>> STAGE D ✅${WHITE}\n"

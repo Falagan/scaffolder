@@ -1,0 +1,4 @@
+/dist
+/generators/app/shared/logs/custom/easter-egg-log.ts
+/generators/app/assets/configs/commit-lint/commitlint.config.js
+commitlint.config.js

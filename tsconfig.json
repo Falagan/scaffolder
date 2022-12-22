@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": ".",
+    "sourceMap": true,
+    "target": "ESNext",
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["generators"]
+}

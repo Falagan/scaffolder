@@ -1,0 +1,51 @@
+#!/usr/bin/env sh
+
+. "$(dirname "$0")/_/husky.sh"
+
+LIGHTGREEN='\033[1;32m'
+
+WHITE='\033[1;37m'
+
+YELLOW='\033[1;33m'
+
+RED='\033[0;31m'
+
+printf "${YELLOW}\n\nCOMMIT CHECKS 📚 - Please, be patient until this process finishes ⏳${WHITE}\n"
+
+# Format style using prettier - STAGE A
+
+printf "${YELLOW}STAGE A - Formmating staged files using Prettier${WHITE}\n"
+
+npx pretty-quick --staged --pattern '**/**/*.{js,ts,json}' ||
+  (
+
+    printf "${RED}❌ ERROR! ❌: Re-run npx pretty-quick --staged --pattern '**/**/*.{js,ts,json}' to check prettier and then try to commit again${WHITE}\n"
+
+    false
+
+  )
+
+printf "${LIGHTGREEN}>>>> STAGE A ✅${WHITE}\n"
+
+# Check syntax using CSpell - STAGE B
+
+printf "${YELLOW}STAGE B - Checking english grammar using CSpell${WHITE}\n"
+
+
+
+printf "${LIGHTGREEN}>>>> STAGE B ✅${WHITE}\n"
+
+# Check ESLint Standards - STAGE C
+
+printf "${YELLOW}STAGE C - Checking style using ESlint (through lint-staged)${WHITE}\n"
+
+npm run lint-staged ||
+  (
+
+    printf "${RED}❌ ERROR! ❌: Re-run 'npx lint-staged' to check ESlint (through lint-staged) and then try to commit again${WHITE}\n"
+
+    false
+
+  )
+
+printf "${LIGHTGREEN}>>>> STAGE C ✅${WHITE}\n"
