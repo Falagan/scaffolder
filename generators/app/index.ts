@@ -1,48 +1,36 @@
 import Generator from 'yeoman-generator';
 import { OUT_PUT_DIRECTORY } from './config';
 import { gitInitialization } from './shared/commands/git-commands';
-import { defaultPrompting } from './shared/inputs/default-prompting';
+import { basePrompting, ScaffolderGeneratorOpts } from './shared/inputs/base-prompting';
 import { logEasterEgg } from './shared/logs/custom/easter-egg-log';
 import { TEMPLATES_MAP } from './templates/templates-map';
 import { logJobDone } from './shared/logs/custom/job-done-log';
 
-export interface CeNodeGeneratorOpts {
-  name: string;
-  templateType: string;
-  gitRemoteRepository: string;
-  appName: string;
-  projectName: string;
-}
+export let ScaffolderGenerator: Generator<ScaffolderGeneratorOpts>;
 
-export let CeNodeGenerator: Generator<CeNodeGeneratorOpts>;
-
-module.exports = class extends Generator<CeNodeGeneratorOpts> {
-  constructor(args: string | string[], opts: CeNodeGeneratorOpts) {
+module.exports = class extends Generator<ScaffolderGeneratorOpts> {
+  constructor(args: string | string[], opts: ScaffolderGeneratorOpts) {
     super(args, opts);
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    CeNodeGenerator = this;
+    ScaffolderGenerator = this;
   }
 
   initializing() {
-    CeNodeGenerator.destinationRoot(OUT_PUT_DIRECTORY);
+    ScaffolderGenerator.destinationRoot(OUT_PUT_DIRECTORY);
     logEasterEgg();
   }
 
   async prompting() {
-    CeNodeGenerator.options = await defaultPrompting();
-  }
-
-  install() {
-    // npmInstall();
+    ScaffolderGenerator.options = await basePrompting();
   }
 
   writing() {
-    const template = TEMPLATES_MAP[CeNodeGenerator.options.templateType];
-    template.FN();
+    const templateFn = TEMPLATES_MAP[ScaffolderGenerator.options.templateType];
+    templateFn();
   }
 
   end() {
-    gitInitialization(CeNodeGenerator.options.gitRemoteRepository);
+    gitInitialization(ScaffolderGenerator.options.gitRemoteRepository);
     logJobDone();
   }
 };
