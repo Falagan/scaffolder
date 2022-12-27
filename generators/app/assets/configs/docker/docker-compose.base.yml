@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  base-service:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=local
+    volumes:
+      - ./:/app
+      - mono-node-modules:/app/node_modules

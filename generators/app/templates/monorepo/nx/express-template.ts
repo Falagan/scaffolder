@@ -1,13 +1,13 @@
-import { CeNodeGenerator } from '../../../index';
+import { ScaffolderGenerator } from '../../../index';
 
 export function writingMonoRepoNxExpressTemplate() {
-  CeNodeGenerator.spawnCommandSync('create-nx-workspace', [
+  ScaffolderGenerator.spawnCommandSync('create-nx-workspace', [
     '--name',
-    `${CeNodeGenerator.options.projectName}`,
+    `${ScaffolderGenerator.options.projectName}`,
     '--preset',
     'express',
     '--appName',
-    `${CeNodeGenerator.options.appName}`,
+    `${ScaffolderGenerator.options.appName}`,
     '--nxCloud',
     'false',
   ]);

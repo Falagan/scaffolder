@@ -1,4 +1,4 @@
-import { CeNodeGenerator } from '../../index';
+import { ScaffolderGenerator } from '../../index';
 import { log, LOGS_COLORS, LOGS_ICONS } from '../logs/log';
 
 export function setUpPrettier() {
@@ -7,18 +7,18 @@ export function setUpPrettier() {
 }
 
 function install() {
-  CeNodeGenerator.spawnCommandSync('npm', ['install', '--save-dev', 'prettier'], { shell: true });
+  ScaffolderGenerator.spawnCommandSync('npm', ['install', '--save-dev', 'prettier'], { shell: true });
 }
 
 function config() {
   log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Setting up prettier config...');
-  CeNodeGenerator.fs.copy(
+  ScaffolderGenerator.fs.copy(
     `./generators/app/assets/configs/prettier/.prettierrc`,
-    `${CeNodeGenerator.destinationRoot()}/.prettierrc`,
+    `${ScaffolderGenerator.destinationRoot()}/.prettierrc`,
   );
-  CeNodeGenerator.fs.copy(
+  ScaffolderGenerator.fs.copy(
     `./generators/app/assets/configs/prettier/.prettierignore`,
-    `${CeNodeGenerator.destinationRoot()}/.prettierignore`,
+    `${ScaffolderGenerator.destinationRoot()}/.prettierignore`,
   );
   log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Commitlint configured!');
 }

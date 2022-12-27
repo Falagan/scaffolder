@@ -1,7 +1,7 @@
-import { CeNodeGenerator } from '../../../index';
+import { ScaffolderGenerator } from '../../../index';
 
 export function logEasterEgg() {
-  CeNodeGenerator.log(` 
+  ScaffolderGenerator.log(` 
       ___  _____
     .'/,-Y"     "~-.
     l.Y             ^.

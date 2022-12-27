@@ -1,4 +1,4 @@
-import { CeNodeGenerator } from '../../index';
+import { ScaffolderGenerator } from '../../index';
 import { log, LOGS_COLORS, LOGS_ICONS } from '../logs/log';
 
 export function setUpCommitLint() {
@@ -7,7 +7,7 @@ export function setUpCommitLint() {
 
   function install() {
     log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Installing commitlint...');
-    CeNodeGenerator.spawnCommandSync(
+    ScaffolderGenerator.spawnCommandSync(
       'npm',
       ['install', '--save-dev', '@commitlint/cli', '@commitlint/config-conventional'],
       { shell: true },
@@ -16,9 +16,9 @@ export function setUpCommitLint() {
 
   function config() {
     log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Setting up commitlint config...');
-    CeNodeGenerator.fs.copy(
+    ScaffolderGenerator.fs.copy(
       `./generators/app/assets/configs/commit-lint/commitlint.config.js`,
-      `${CeNodeGenerator.destinationRoot()}/commitlint.config.js`,
+      `${ScaffolderGenerator.destinationRoot()}/commitlint.config.js`,
     );
     log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Commitlint configured!');
   }
