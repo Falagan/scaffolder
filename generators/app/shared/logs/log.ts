@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { CeNodeGenerator } from '../../index';
+import { ScaffolderGenerator } from '../../index';
 
 export enum LOGS_COLORS {
   INFO = 'blue',
@@ -16,5 +16,5 @@ export enum LOGS_ICONS {
 }
 
 export function log(color: LOGS_COLORS, icon: LOGS_ICONS, text: string) {
-  CeNodeGenerator.log(chalk[color](`${text}`));
+  ScaffolderGenerator.log(chalk[color](`${text}`));
 }

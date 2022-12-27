@@ -1,8 +1,8 @@
 import chalk from 'chalk';
-import { CeNodeGenerator } from '../../../index';
+import { ScaffolderGenerator } from '../../../index';
 
 export function logJobDone() {
-  CeNodeGenerator.log(chalk.green('----------------------------------------'));
-  CeNodeGenerator.log(chalk.magenta('Jobs is done motherfucker.'));
-  CeNodeGenerator.log(chalk.green('----------------------------------------'));
+  ScaffolderGenerator.log(chalk.green('----------------------------------------'));
+  ScaffolderGenerator.log(chalk.magenta('Job is done motherfucker.'));
+  ScaffolderGenerator.log(chalk.green('----------------------------------------'));
 }

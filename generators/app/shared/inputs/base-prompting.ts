@@ -1,8 +1,19 @@
-import { CeNodeGenerator, CeNodeGeneratorOpts } from '../../index';
+import { ScaffolderGenerator } from '../../index';
 import { TEMPLATES } from '../../templates/templates-list';
+import { angularPrompting, AngularGeneratorOptions } from './angular-prompting';
 
-export function defaultPrompting() {
-  return CeNodeGenerator.prompt<CeNodeGeneratorOpts>([
+export interface ScaffolderGeneratorBaseOpts {
+  name: string;
+  templateType: string;
+  gitRemoteRepository: string;
+  appName: string;
+  projectName: string;
+}
+
+export type ScaffolderGeneratorOpts = ScaffolderGeneratorBaseOpts & AngularGeneratorOptions;
+
+export function basePrompting() {
+  return ScaffolderGenerator.prompt<ScaffolderGeneratorOpts>([
     {
       type: 'input',
       name: 'projectName',
@@ -27,5 +38,6 @@ export function defaultPrompting() {
       message: 'Select the template you want:',
       choices: Object.values(TEMPLATES),
     },
+    ...angularPrompting,
   ]);
 }
