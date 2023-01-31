@@ -11,7 +11,7 @@ export interface AngularGeneratorOptions {
   angularMonoRepoNxStyle: 'true' | 'false'; //Adds a proxy config
 }
 
-export const angularPrompting = [
+export const nxAngularPrompting = [
   // Angular Nx Monorepo Options
   {
     when: (answers: ScaffolderGeneratorOpts) => answers.templateType === TEMPLATES.MONO_REPO_NX_ANGULAR,

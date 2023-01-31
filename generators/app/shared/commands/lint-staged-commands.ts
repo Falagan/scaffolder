@@ -12,7 +12,7 @@ function install() {
 
 function config() {
   const file = editJsonFile(`${ScaffolderGenerator.destinationRoot()}/package.json`);
-  file.set('lint-staged', { '**/**/*.{js,jsx,ts,tsx,json}': ['eslint'] });
+  file.set('lint-staged', { '**/**/*.{js,jsx,ts,tsx}': ['eslint'] });
   file.save();
   ScaffolderGenerator.spawnCommandSync('npm', ['pkg', 'set', 'scripts.lint-staged="lint-staged"'], {
     shell: true,

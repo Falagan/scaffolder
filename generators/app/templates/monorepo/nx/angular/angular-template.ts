@@ -27,7 +27,7 @@ export function writingMonoRepoNxAngularTemplate() {
 function createBaseWorkspace() {
   log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Creating base workspace...');
   ScaffolderGenerator.spawnCommandSync(
-    'create-nx-workspace',
+    'npx create-nx-workspace@latest',
     ['--preset', 'apps', '--name', `${ScaffolderGenerator.options.projectName}`, '--nxCloud', 'false', '--verbose'],
     { shell: true },
   );
@@ -36,7 +36,7 @@ function createBaseWorkspace() {
 
 function createAngularTemplate() {
   log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Creating template...');
-  ScaffolderGenerator.spawnCommandSync('npm', ['install', '-D', '@nrwl/angular'], { shell: true });
+  ScaffolderGenerator.spawnCommandSync('npm', ['install', '-D', '@nrwl/angular@latest'], { shell: true });
   ScaffolderGenerator.spawnCommandSync(
     'nx',
     [

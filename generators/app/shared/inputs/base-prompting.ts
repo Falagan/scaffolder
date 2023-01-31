@@ -1,6 +1,6 @@
 import { ScaffolderGenerator } from '../../index';
 import { TEMPLATES } from '../../templates/templates-list';
-import { angularPrompting, AngularGeneratorOptions } from './angular-prompting';
+import { nxAngularPrompting, AngularGeneratorOptions } from './nx-angular-prompting';
 
 export interface ScaffolderGeneratorBaseOpts {
   name: string;
@@ -18,19 +18,19 @@ export function basePrompting() {
       type: 'input',
       name: 'projectName',
       message: 'Your project name',
-      store: true,
+      store: false,
     },
     {
       type: 'input',
       name: 'appName',
       message: 'Your app name',
-      store: true,
+      store: false,
     },
     {
       type: 'input',
       name: 'gitRemoteRepository',
       message: 'Your remote git repository',
-      store: true,
+      store: false,
     },
     {
       type: 'list',
@@ -38,6 +38,6 @@ export function basePrompting() {
       message: 'Select the template you want:',
       choices: Object.values(TEMPLATES),
     },
-    ...angularPrompting,
+    ...nxAngularPrompting,
   ]);
 }
