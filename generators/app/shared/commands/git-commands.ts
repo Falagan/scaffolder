@@ -10,6 +10,8 @@ export function gitInitialization(repoUrl: string) {
     ScaffolderGenerator.spawnCommandSync('git', ['init'], {
       shell: true,
     });
+    ScaffolderGenerator.spawnCommandSync('git', ['add', '--all']);
+    ScaffolderGenerator.spawnCommandSync('git', ['commit', '-m', 'chore: initial commit scaffolding']);
     log(LOGS_COLORS.SUCCESS, LOGS_ICONS.SUCCESS, 'Git init done!');
   }
 

@@ -25,7 +25,9 @@ export function writingAngularTemplate() {
 
 function createAngularTemplate() {
   log(LOGS_COLORS.INFO, LOGS_ICONS.INFO, 'Creating template...');
-  ScaffolderGenerator.spawnCommandSync('ng', ['new', `${ScaffolderGenerator.options.appName}`], { shell: true });
+  ScaffolderGenerator.spawnCommandSync('ng', ['new', `${ScaffolderGenerator.options.appName}`, '--skip-git'], {
+    shell: true,
+  });
   log(LOGS_COLORS.SUCCESS, LOGS_ICONS.SUCCESS, 'Template created!');
 }
 
